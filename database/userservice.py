@@ -53,3 +53,6 @@ def add_profile_photo_db(profile_photo, user_id):
 
 
 # Изменить данные пользователя и фотография
+
+class AxadModel():
+    pass

@@ -52,7 +52,21 @@ def add_profile_photo_db(profile_photo, user_id):
         return False
 
 
-# Изменить данные пользователя и фотография
+# Изменить данные пользователя и фотография(ДЗ)
+# def edit_user_db
+# def edit_profile_photo_db
 
-class AxadModel():
-    pass
+
+# Удаления фото профиля
+def delete_profile_photo_db(user_id):
+    db = next(get_db())
+
+    checker = db.query(User).filter_by(id=user_id).first()
+
+    if checker:
+        checker.profile_photo = 'None'
+        db.commit()
+
+        return 'Фото провфиля удалено'
+    else:
+        return False

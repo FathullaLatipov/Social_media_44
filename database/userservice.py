@@ -52,11 +52,6 @@ def add_profile_photo_db(profile_photo, user_id):
         return False
 
 
-# Изменить данные пользователя и фотография(ДЗ)
-# def edit_user_db
-# def edit_profile_photo_db
-
-
 # Удаления фото профиля
 def delete_profile_photo_db(user_id):
     db = next(get_db())
@@ -70,3 +65,23 @@ def delete_profile_photo_db(user_id):
         return 'Фото провфиля удалено'
     else:
         return False
+
+# Получить всех пользователей
+def get_all_users_db():
+    db = next(get_db())
+
+    all_users = db.query(User).all()
+
+    return all_users
+
+# Получить информацию про определенного пользователя
+def get_exact_user_db(user_id):
+    db = next(get_db())
+
+    exact_user = db.query(User).filter(id=user_id).first()
+
+    return exact_user
+
+# Изменить данные пользователя и фотография(ДЗ)
+# def edit_user_db
+# def edit_profile_photo_db

@@ -29,6 +29,14 @@ def add_post_photo_db(post_id, post_photo):
 
     return 'Фотография загружен'
 
+
+def get_post_photo_db():
+    db = next(get_db())
+
+    new_post_photo = db.query(PostPhoto).all()
+
+    return new_post_photo
+
 # Изменить пост
 def edit_post_db(post_id, user_id, new_text):
     db = next(get_db())
@@ -42,6 +50,7 @@ def edit_post_db(post_id, user_id, new_text):
         return 'Успешно изменено'
     else:
         return False
+
 
 # Удалить пост
 def delete_post_db(post_id):
@@ -60,6 +69,21 @@ def delete_post_db(post_id):
         return "Успешно удалено"
     else:
         return False
+
+
 #     ДЗ!!!!!!!
-# Получить все посты - def get_all_posts_db()
-# Получить определенный пост - def get_exact_post_db()
+def get_all_posts_db():
+    db = next(get_db())
+
+    all_posts = db.query(UserPost).all()
+    return all_posts
+
+def get_exact_post_db(post_id):
+    db = next(get_db())
+
+    exact_post = db.query(PostPhoto).filter_by(id=post_id).first()
+
+    if exact_post:
+        return exact_post
+    else:
+        return 'Error'
